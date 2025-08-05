@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="description" content="GlowStore - Achadinhos de beleza, produtos que vão mudar seu visual.">
+
+    <meta name="keywords" content="beleza, maquiagem, cuidados com a pele, produtos de beleza">
+
+    <title>🌟✨ GlowStore ✨🌟 – Achadinhos de Beleza</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+
+            font-family: 'Poppins', sans-serif;
+
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+
+            color: #444;
+
+            margin: 0;
+
+            padding: 0;
+
+            text-align: center; /* Centraliza o texto */
+
+        }
+
+        header {
+
+            background: linear-gradient(to right, #f48fb1, #fce4ec);
+
+            padding: 6rem 1rem 3rem;
+
+            color: #fff;
+
+            border-bottom-left-radius: 60px;
+
+            border-bottom-right-radius: 60px;
+
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
+            position: relative;
+
+            z-index: 10;
+
+        }
+
+        header h1 {
+
+            font-weight: 700;
+
+            font-size: 3.5rem;
+
+            margin: 0;
+
+            letter-spacing: 0.15em;
+
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+
+        }
+
+        header p {
+
+            font-weight: 500;
+
+            font-size: 1.4rem;
+
+            margin-top: 12px;
+
+            max-width: 600px;
+
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.15);
+
+        }
+
+        nav {
+
+            position: fixed;
+
+            top: 0;
+
+            width: 100%;
+
+            background: #f48fb1cc;
+
+            backdrop-filter: saturate(180%) blur(10px);
+
+            padding: 0.7rem 2rem;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 30px;
+
+            font-weight: 600;
+
+            color: #fff;
+
+            letter-spacing: 0.1em;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+
+            z-index: 20;
+
+        }
+
+        nav a {
+
+            color: white;
+
+            text-decoration: none;
+
+            transition: color 0.3s ease;
+
+        }
+
+        nav a:hover {
+
+            color: #ffd1e0;
+
+        }
+
+        .container {
+
+            max-width: 1200px;
+
+            margin: 100px auto 60px;
+
+            padding: 0 20px;
+
+        }
+
+        h2.category {
+
+            color: #d81e6a;
+
+            margin-bottom: 25px;
+
+            border-bottom: 3px solid #ff5a8e;
+
+            padding-bottom: 8px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+        }
+
+        .grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 32px;
+
+        }
+
+        .card {
+
+            background: white;
+
+            border-radius: 24px;
+
+            box-shadow: 0 8px 20px rgba(255, 90, 142, 0.15);
+
+            overflow: hidden;
+
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+            position: relative;
+
+            cursor: default;
+
+            transform-origin: center center;
+
+        }
+
+        .card.expanded {
+
+            transform: scale(1.1);
+
+            box-shadow: 0 18px 35px rgba(255, 90, 142, 0.45);
+
+            z-index: 10;
+
+        }
+
+        .card img {
+
+            width: 100%;
+
+            height: 220px;
+
+            object-fit: cover;
+
+            transition: transform 0.3s ease;
+
+        }
+
+        .card.expanded img {
+
+            transform: scale(1.1);
+
+        }
+
+        .card-content {
+
+            padding: 25px 22px 30px;
+
+        }
+
+        .card-content h3 {
+
+            margin: 0 0 12px 0;
+
+            font-size: 1.3em;
+
+            color: #d81e6a;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+        .tag-badge {
+
+            background: #ff5a8e;
+
+            color: white;
+
+            font-size: 0.85em;
+
+            font-weight: 600;
+
+            padding: 4px 14px;
+
+            border-radius: 18px;
+
+            box-shadow: 0 0 10px rgba(255, 90, 142, 0.4);
+
+        }
+
+        .card-content a {
+
+            display: inline-block;
+
+            margin-top: 15px;
+
+            padding: 12px 26px;
+
+            background: linear-gradient(90deg, #ff5a8e, #ff357a);
+
+            color: white;
+
+            border-radius: 36px;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            letter-spacing: 0.5px;
+
+            box-shadow: 0 5px 15px rgba(255, 53, 122, 0.4);
+
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+
+        }
+
+        .card-content a:hover {
+
+            background: linear-gradient(90deg, #ff357a, #ff5a8e);
+
+            box-shadow: 0 8px 25px rgba(255, 90, 142, 0.7);
+
+        }
+
+        /* Botão subir */
+
+        #btnScrollTop {
+
+            position: fixed;
+
+            bottom: 40px;
+
+            right: 40px;
+
+            display: none;
+
+            background: #ff5a8e;
+
+            border-radius: 50%;
+
+            width: 52px;
+
+            height: 52px;
+
+            box-shadow: 0 8px 20px rgba(255, 90, 142, 0.6);
+
+            border: none;
+
+            color: white;
+
+            cursor: pointer;
+
+            transition: background 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+
+            z-index: 30;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+        #btnScrollTop:hover {
+
+            background: #ff357a;
+
+            transform: scale(1.1);
+
+            box-shadow: 0 12px 25px rgba(255, 90, 142, 0.7);
+
+        }
+
+        #btnScrollTop svg {
+
+            width: 24px;
+
+            height: 24px;
+
+            transition: transform 0.3s ease;
+
+        }
+
+        #btnScrollTop:hover svg {
+
+            transform: translateY(-2px);
+
+        }
+
+        /* Responsivo */
+
+        @media (max-width: 600px) {
+
+            header h1 {
+
+                font-size: 2.6em;
+
+            }
+
+            header p {
+
+                font-size: 1.2em;
+
+                max-width: 90%;
+
+            }
+
+            .grid {
+
+                grid-template-columns: 1fr !important;
+
+            }
+
+            .card-content a {
+
+                padding: 10px 22px;
+
+                font-size: 0.95em;
+
+            }
+
+            nav {
+
+                padding: 0.5rem 1rem;
+
+                gap: 15px;
+
+                font-size: 0.9em;
+
+            }
+
+        }
+
+        @media (max-width: 400px) {
+
+            header h1 {
+
+                font-size: 2.2em;
+
+            }
+
+            header p {
+
+                font-size: 1em;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<nav>
+
+    <a href="#maquiagem-grid">Maquiagem</a>
+
+    <a href="#cuidados-grid">Cuidados</a>
+
+</nav>
+
+<header>
+
+    <h1> GlowStore </h1>
+
+    <p>Achadinhos de beleza, produtos que vão mudar seu visual.</p>
+
+</header>
+
+<main class="container">
+
+    <h2 class="category">💄 Maquiagem</h2>
+
+    <div class="grid" id="maquiagem-grid">
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1585665100416-04ca5b865f4f" alt="Lip Gloss Volume Instantâneo" />
+
+            <div class="card-content">
+
+                <h3>💋 Lip Gloss Volume Instantâneo <span class="tag-badge">🏆 Mais vendido</span></h3>
+
+                <a href="https://seulink.com/lipgloss" target="_blank" rel="noopener noreferrer">Ver produto</a>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1633174524821-103cb8c9e27d" alt="Base Glow Skin Hidrabalance" />
+
+            <div class="card-content">
+
+                <h3>✨ Base Glow Skin Hidrabalance</h3>
+
+                <a href="https://seulink.com/baseglow" target="_blank" rel="noopener noreferrer">Ver produto</a>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1595514371728-4fe4bb31fe45" alt="Kit de Pincéis Profissionais" />
+
+            <div class="card-content">
+
+                <h3>🖌️ Kit de Pincéis Profissionais</h3>
+
+                <a href="https://seulink.com/kitpinceis" target="_blank" rel="noopener noreferrer">Ver produto</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <h2 class="category">🧴 Cuidados com a pele</h2>
+
+    <div class="grid" id="cuidados-grid">
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1621221184082-c0979dfb7b19" alt="Massageador Facial de Jade" />
+
+            <div class="card-content">
+
+                <h3>🌿 Massageador Facial de Jade <span class="tag-badge">🏆 Mais vendido</span></h3>
+
+                <a href="https://seulink.com/jaderoller" target="_blank" rel="noopener noreferrer">Ver produto</a>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1600185365483-26d7fe3e0071" alt="Máscara Facial Detox Rosa" />
+
+            <div class="card-content">
+
+                <h3>🧖‍♀️ Máscara Facial Detox Rosa</h3>
+
+                <a href="https://seulink.com/maskdetox" target="_blank" rel="noopener noreferrer">Ver produto</a>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <img src="https://i.imgur.com/R8Angjl.jpeg" alt="Espelho de Maquiagem com LED" />
+
+            <div class="card-content">
+
+                <h3>💡 Espelho de Maquiagem com LED <span class="tag-badge">🏆 Mais vendido</span></h3>
+
+                <a href="https://www.amazon.com.br/Espelho-Penteadeira-Inteligente-Maquiagem-Girat%C3%B3rio/dp/B0D9PXM98M#" target="_blank" rel="noopener noreferrer">Ver produto</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+<button id="btnScrollTop" aria-label="Voltar ao topo">
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+
+        <path d="M12 2l-10 10h6v8h8v-8h6z"/>
+
+    </svg>
+
+</button>
+
+<script>
+
+    // Função debounce para performance
+
+    function debounce(func, wait = 10, immediate = false) {
+
+        let timeout;
+
+        return function() {
+
+            const context = this, args = arguments;
+
+            const later = function() {
+
+                timeout = null;
+
+                if (!immediate) func.apply(context, args);
+
+            };
+
+            const callNow = immediate && !timeout;
+
+            clearTimeout(timeout);
+
+            timeout = setTimeout(later, wait);
+
+            if (callNow) func.apply(context, args);
+
+        };
+
+    }
+
+    // Destacar o card mais próximo do centro da tela
+
+    function highlightCenteredCard() {
+
+        const cards = document.querySelectorAll('.card');
+
+        const centerX = window.innerWidth / 2;
+
+        const centerY = window.innerHeight / 2;
+
+        let closestCard = null;
+
+        let closestDistance = Infinity;
+
+        cards.forEach(card => {
+
+            const rect = card.getBoundingClientRect();
+
+            const cardCenterX = rect.left + rect.width / 2;
+
+            const cardCenterY = rect.top + rect.height / 2;
+
+            const distance = Math.hypot(centerX - cardCenterX, centerY - cardCenterY);
+
+            if (distance < closestDistance) {
+
+                closestDistance = distance;
+
+                closestCard = card;
+
+            }
+
+        });
+
+        cards.forEach(card => card.classList.remove('expanded'));
+
+        if (closestCard) {
+
+            closestCard.classList.add('expanded');
+
+        }
+
+    }
+
+    const debouncedHighlight = debounce(highlightCenteredCard, 50);
+
+    window.addEventListener('scroll', debouncedHighlight);
+
+    window.addEventListener('resize', debouncedHighlight);
+
+    window.addEventListener('load', highlightCenteredCard);
+
+    // Botão subir
+
+    const btnScrollTop = document.getElementById('btnScrollTop');
+
+    window.addEventListener('scroll', () => {
+
+        btnScrollTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+
+    });
+
+    btnScrollTop.addEventListener('click', () => {
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    });
+
+</script>
+
+</body>
+
+</html>
+
