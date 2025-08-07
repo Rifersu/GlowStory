@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🔌 TechStore - Gadgets Incríveis</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #e0e0e0, #ffffff);
+    }
+
+    header {
+      background: linear-gradient(120deg, #1f1f1f, #444);
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+      border-bottom: 5px solid #2196F3;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    nav {
+      background-color: #333;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: #2196F3;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      padding: 1.5rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .produto {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .produto:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .carousel {
+      position: relative;
+      max-width: 100%;
+      overflow: hidden;
+      height: 300px; /* Altura fixa para o carrossel */
+    }
+
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease;
+      height: 100%; /* Para garantir que as imagens ocupem toda a altura do carrossel */
+    }
+
+    .carousel-image {
+      min-width: 100%; /* Cada imagem ocupa 100% da largura do carrossel */
+      height: 100%; /* Para garantir que as imagens ocupem toda a altura do carrossel */
+      object-fit: cover; /* Cobre o espaço mantendo a proporção */
+    }
+
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255, 255, 255, 0.8);
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 10;
+    }
+
+    .carousel-button.left {
+      left: 10px;
+    }
+
+    .carousel-button.right {
+      right: 10px;
+    }
+
+    .produto-info {
+      padding: 1rem;
+    }
+
+    .produto-info h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .produto-info button {
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+
+    .produto-info button:hover {
+      background-color: #1976D2;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #eee;
+      font-size: 1rem;
+      border-top: 5px solid #2196F3;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: none;
+      background-color: #1f1f1f;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    #scrollTopBtn:hover {
+      background-color: #444;
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      header p {
+        font-size: 0.9rem;
+      }
+
+      nav {
+        gap: 1rem;
+        padding: 0.8rem;
+      }
+
+      .produto-info h3 {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔌 TechStore</h1>
+  <p>Achadinhos de tecnologia que vão mudar seu dia a dia 💡</p>
+</header>
+
+<nav>
+  <a href="#">Início</a>
+  <a href="#produtos">Produtos</a>
+  <a href="#ofertas">Ofertas</a>
+</nav>
+
+<section class="grid" id="produtos">
+  <div class="produto">
+    <div class="carousel">
+      <div class="carousel-images" data-current-index="0">
+<img class="carousel-image" src="https://i.imgur.com/n0Vu0xS.jpeg" alt="Fone Bluetooth">
+        <img class="carousel-image" src="https://i.imgur.com/4CxHH6U.jpeg" alt="Luminária RGB">
+        <img class="carousel-image" src="https://i.imgur.com/RwgZmn0.jpeg" alt="Mini Teclado Gamer">
+        <img class="carousel-image" src="https://i.imgur.com/PvZTTxi.jpeg" alt="Carregador Sem Fio">
+        <img class="carousel-image" src="https://i.imgur.com/Bd3nlpj.jpeg" alt="Smartwatch Premium">
+      </div>
+      <button class="carousel-button left" onclick="moveCarousel(this, -1)">&#10094;</button>
+      <button class="carousel-button right" onclick="moveCarousel(this, 1)">&#10095;</button>
+    </div>
+    <div class="produto-info">
+      <h3>⌚ Smartwatch </h3>
+      <button onclick="window.open('https://s.shopee.com.br/5L1W9ddjb0')">Ver Oferta</button>
+    </div>
+  </div>
+
+  <div class="produto">
+    <div class="carousel">
+      <div class="carousel-images" data-current-index="0">
+        <img class="carousel-image" src="https://i.imgur.com/nthNWM8.jpeg" alt="Fone Bluetooth">
+        <img class="carousel-image" src="https://i.imgur.com/O8xTHBS.jpeg" alt="Luminária RGB">
+        <img class="carousel-image" src="https://images.tcdn.com.br/img/img_prod/993134/fone_de_ouvido_m10_bluetooth_v5_3_sem_fio_wireless_com_display_led_digital_1726_1_36627cc45ed5731b502194f04ba033cb.jpg" alt="Mini Teclado Gamer">
+        <img class="carousel-image" src="https://io.convertiez.com.br/m/feiradamadrugada/shop/products/images/418586186/medium/fone-de-ouvido-bluetooth-m10-tws-com-tela-de-led-sem-fio_203872.jpg" alt="Carregador Sem Fio">
+        <img class="carousel-image" src="https://www.utimix.com/wp-content/uploads/2025/01/fone-de-ouvido-sem-fio-bluetooth-m10-touch-display-led.jpg" alt="Smartwatch Premium">
+      </div>
+      <button class="carousel-button left" onclick="moveCarousel(this, -1)">&#10094;</button>
+      <button class="carousel-button right" onclick="moveCarousel(this, 1)">&#10095;</button>
+    </div>
+    <div class="produto-info">
+      <h3>🎧 Fone Bluetooth M10</h3>
+      <button onclick="window.open('https://s.shopee.com.br/802HLGFnwH')">Ver Oferta</button>
+    </div>
+  </div>
+
+  <div class="produto">
+    <div class="carousel">
+      <div class="carousel-images" data-current-index="0">
+        <img class="carousel-image" src="https://acdn-us.mitiendanube.com/stores/006/043/301/products/imagem-do-whatsapp-de-2024-09-04-as-22-38-14_f270d672-da4948690ae017a57b17446336056415-480-0.jpg" alt="Luminária RGB">
+        <img class="carousel-image" src="https://http2.mlstatic.com/D_Q_NP_720135-MLA79794622204_102024-O.webp" alt="Mini Teclado Gamer">
+        <img class="carousel-image" src="https://images.tcdn.com.br/img/img_prod/745260/mouse_gamer_para_jogo_optico_com_led_rgb_usb_pc_videogame_127_1_cae5bb68c6966042571dcc239792af39.jpg" alt="Hub USB 4 portas">
+        <img class="carousel-image" src="https://images.tcdn.com.br/img/img_prod/745260/mouse_gamer_jogo_8000dpi_optico_led_rgb_usb_pc_computador_219_3_12eda5136d67efbd106f49b0b322572d.png" alt="Carregador Sem Fio">
+        <img class="carousel-image" src="https://http2.mlstatic.com/D_NQ_NP_932754-MLA80062515395_102024-O.webp" alt="Smartwatch Premium">
+      </div>
+      <button class="carousel-button left" onclick="moveCarousel(this, -1)">&#10094;</button>
+      <button class="carousel-button right" onclick="moveCarousel(this, 1)">&#10095;</button>
+    </div>
+    <div class="produto-info">
+      <h3>💡 Mouse Gamer MG001</h3>
+      <button onclick="window.open('https://exemplo.com/luminaria', '_blank')">Ver Oferta</button>
+    </div>
+  </div>
+
+  <div class="produto">
+    <div class="carousel">
+      <div class="carousel-images" data-current-index="0">
+        <img class="carousel-image" src="https://images2.kabum.com.br/produtos/fotos/sync_mirakl/618562/Teclado-Gamer-Mecanico-60-RGB-T-wolf-T61_1730163956_gg.jpg" alt="Mini Teclado Gamer">
+        <img class="carousel-image" src="https://sc04.alicdn.com/kf/Hc557dc4c701f4223b287cf38b233b957B.png" alt="Hub USB 4 portas">
+        <img class="carousel-image" src="https://cdn.awsli.com.br/300x300/1224/1224482/produto/271506726/screenshot-2024-06-03-at-15-45-19-e42ad316dd4fbd6294ac1c699bbf0141-jpeg--imagem-2p6b1g0rq3.png" alt="Carregador Sem Fio">
+        <img class="carousel-image" src="https://img4.dhresource.com/webp/m/f3/albu/jc/o/19/cbeee5f0-1fc2-4870-b531-4896f961344f.jpg" alt="Smartwatch Premium">
+        <img class="carousel-image" src="https://a-static.mlcdn.com.br/1500x1500/t61-teclado-mecanico-gamer-mini-portatil-usb-wired-jogo-t-wolf/oliststore/mgl9ydzax3ov30ni/67ce6d679219c26a5509f941aa071630.jpeg" alt="Fone Bluetooth">
+      </div>
+      <button class="carousel-button left" onclick="moveCarousel(this, -1)">&#10094;</button>
+      <button class="carousel-button right" onclick="moveCarousel(this, 1)">&#10095;</button>
+    </div>
+    <div class="produto-info">
+      <h3>🎮 Teclado Mecânico RGB</h3>
+      <button onclick="window.open('https://s.shopee.com.br/8fHyQrfXU4')">Ver Oferta</button>
+    </div>
+  </div>
+
+  <div class="produto">
+    <div class="carousel">
+      <div class="carousel-images" data-current-index="0">
+        <img class="carousel-image" src="https://m.media-amazon.com/images/I/41BRhElFrdL.jpg" alt="Hub USB 4 portas">
+        <img class="carousel-image" src="https://a-static.mlcdn.com.br/800x560/projetor-hy300-wifi-6-suporta-4k-1080p-android-11-portatil-al/olistplus/o2ejafvk4fgu6vkl/bdd09cdc390a2dd69cf7b126e0886282.jpeg" alt="Carregador Sem Fio">
+        <img class="carousel-image" src="https://cdn.sistemawbuy.com.br/arquivos/239692cd7bd57d07637ca8cafa75c906/produtos/668c466385c7a/d_nq_np_2x_929203-mlb71668056102-66abb81d31947.jpg" alt="Smartwatch Premium">
+        <img class="carousel-image" src="https://cdn.shopify.com/s/files/1/0264/6776/2231/files/Sem_titulo-1kuyfuijkghy_Prancheta_1.png?v=1726667586" alt="Fone Bluetooth">
+        <img class="carousel-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDC49kD-B8R7YHzliAxo1n-E8jlviqihjdEA&s" alt="Luminária RGB">
+      </div>
+      <button class="carousel-button left" onclick="moveCarousel(this, -1)">&#10094;</button>
+      <button class="carousel-button right" onclick="moveCarousel(this, 1)">&#10095;</button>
+    </div>
+    <div class="produto-info">
+      <h3>🔌 Projetor Hy300</h3>
+      <button onclick="window.open('https://s.shopee.com.br/2qKBSH0Cts')">Ver Oferta</button>
+    </div>
+  </div>
+
+  <div class="produto">
+    <div class="carousel">
+      <div class="carousel-images" data-current-index="0">
+        <img class="carousel-image" src="https://i.imgur.com/EF4KBTU.jpeg" alt="Caixa de Som Go 3">
+        <img class="carousel-image" src="https://i.imgur.com/L0AS58M.jpeg" alt="Smartwatch Premium">
+        <img class="carousel-image" src="https://i.imgur.com/SaxWUYl.jpeg" alt="Fone Bluetooth">
+        <img class="carousel-image" src="https://i.imgur.com/7u9cGJf.jpeg" alt="Luminária RGB">
+        <img class="carousel-image" src="https://i.imgur.com/iXGikNN.jpeg" alt="Mini Teclado Gamer">
+      </div>
+      <button class="carousel-button left" onclick="moveCarousel(this, -1)">&#10094;</button>
+      <button class="carousel-button right" onclick="moveCarousel(this, 1)">&#10095;</button>
+    </div>
+    <div class="produto-info">
+      <h3>⚡ Caixa de Som Go 3</h3>
+      <button onclick="window.open('https://s.shopee.com.br/8ALhSm39Q9')">Ver Oferta</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 TechStore. Todos os direitos reservados.
+</footer>
+
+<button id="scrollTopBtn" onclick="scrollToTop()">↑</button>
+
+<script>
+  const scrollBtn = document.getElementById("scrollTopBtn");
+
+  window.onscroll = function() {
+    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+      scrollBtn.style.display = "block";
+    } else {
+      scrollBtn.style.display = "none";
+    }
+  };
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function moveCarousel(button, direction) {
+    const carousel = button.parentElement;
+    const images = carousel.querySelector('.carousel-images');
+    const totalImages = images.children.length;
+    let currentIndex = parseInt(images.getAttribute('data-current-index')) || 0;
+
+    // Atualiza o índice atual
+    currentIndex = (currentIndex + direction + totalImages) % totalImages;
+    images.setAttribute('data-current-index', currentIndex);
+    
+    // Move a imagem
+    images.style.transform = `translateX(-${currentIndex * 100}%)`; // 100% para mostrar uma imagem por vez
+  }
+</script>
+
+</body>
+</html>
